@@ -8,5 +8,5 @@ output "vm_state" {
 
 output "vm_ip" {
   description = "IP address of the created VM"
-  value       = hyperv_machine_instance.vm.wait_for_ips
+    value = hyperv_machine_instance.vm.network_adaptors[0].wait_for_ips
 }
