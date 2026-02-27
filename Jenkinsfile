@@ -2,9 +2,27 @@ pipeline {
     agent any
 
     stages {
-        stage('Test') {
+        stage('Init') {
             steps {
-                echo 'Detta är min första pipeline'
+                dir('terraform') {
+                    sh 'terraform init'
+                }
+            }
+        }
+
+        stage('Plan') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform plan'
+                }
+            }
+        }
+
+        stage('Apply') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform apply -auto-approve'
+                }
             }
         }
     }

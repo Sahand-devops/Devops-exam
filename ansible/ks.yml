@@ -1,0 +1,9 @@
+- name: Configure VMs
+  hosts: vm_name
+  become: true
+  tasks:
+    - name: Install webbapplication
+      ansible.builtin.package:
+        name: nginx
+        state: latest
+        
