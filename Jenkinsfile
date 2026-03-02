@@ -1,8 +1,13 @@
 pipeline {
     agent any
 
+    environment {
+        hyperv_host = "192.168.50.1"
+}
+
+
     stages {
-        stage('Init') {
+        stage('Terraform Init') {
             steps {
                 dir('terraform') {
                     sh 'terraform init'
@@ -10,7 +15,7 @@ pipeline {
             }
         }
 
-        stage('Plan') {
+        stage('Terraform Plan') {
             steps {
                 dir('terraform') {
                     sh 'terraform plan'
@@ -18,7 +23,7 @@ pipeline {
             }
         }
 
-        stage('Apply') {
+        stage('Terraform Apply') {
             steps {
                 dir('terraform') {
                     sh 'terraform apply -auto-approve'
