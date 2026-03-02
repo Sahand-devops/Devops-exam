@@ -7,6 +7,15 @@ pipeline {
 
 
     stages {
+        stage('Debug') {
+    steps {
+        sh 'echo $TF_VAR_hyperv_host'
+        sh 'ls -la'
+        dir('terraform') {
+            sh 'ls -la'
+        }
+    }
+
         stage('Terraform Init') {
             steps {
                 dir('terraform') {
