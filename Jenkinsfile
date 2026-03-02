@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        hyperv_host = "192.168.50.1"
+      TF_VAR_hyperv_host = "192.168.50.1"
 }
 
 
