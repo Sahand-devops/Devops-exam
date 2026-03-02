@@ -2,19 +2,27 @@ pipeline {
     agent any
 
     environment {
-      TF_VAR_hyperv_host = "192.168.50.1"
-}
-
+        TF_VAR_hyperv_host = "192.168.50.1"
+    }
 
     stages {
+
         stage('Debug') {
-    steps {
-        sh 'echo $TF_VAR_hyperv_host'
-        sh 'ls -la'
-        dir('terraform') {
-            sh 'ls -la'
+            steps {
+                sh 'echo "===== DEBUG INFO ====="'
+                sh 'echo "Current directory:"'
+                sh 'pwd'
+                sh 'echo "Root folder content:"'
+                sh 'ls -la'
+                sh 'echo "Terraform folder content:"'
+                dir('terraform') {
+                    sh 'pwd'
+                    sh 'ls -la'
+                }
+                sh 'echo "TF_VAR_hyperv_host value:"'
+                sh 'echo $TF_VAR_hyperv_host'
+            }
         }
-    }
 
         stage('Terraform Init') {
             steps {
@@ -28,14 +36,6 @@ pipeline {
             steps {
                 dir('terraform') {
                     sh 'terraform plan'
-                }
-            }
-        }
-
-        stage('Terraform Apply') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform apply -auto-approve'
                 }
             }
         }
