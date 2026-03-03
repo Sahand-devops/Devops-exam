@@ -1,5 +1,5 @@
 variable "hyperv_host" {
-  type        = string
+  type        = number
   description = "Hyper-V host IP or hostname"
 }
 
