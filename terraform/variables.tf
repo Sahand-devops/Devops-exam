@@ -1,5 +1,5 @@
 variable "hyperv_host" {
-  type        = number
+  type        = string
   description = "Hyper-V host IP or hostname"
 }
 
@@ -17,6 +17,11 @@ variable "hyperv_password" {
 variable "vm_name" {
   type        = string
   description = "Name of the virtual machine"
+}
+
+variable "vm_ip" {
+  type        = string
+  description = "IP-adress of the virtual machine"
 }
 
 variable "vm_memory_mb" {

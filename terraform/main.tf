@@ -21,7 +21,6 @@ resource "hyperv_machine_instance" "vm" {
   network_adaptors {
     name        = "wan"
     switch_name = var.switch_name
-    wait_for_ips = true
   }
 
   vm_firmware {
