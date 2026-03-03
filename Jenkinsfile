@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'ls -la'
-                sh 'terraform innit'
+                sh 'terraform init'
             }
         }
     }
