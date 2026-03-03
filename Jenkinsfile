@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Test') {
+
+        stage('Terraform Init') {
             steps {
-                sh 'pwd'
-                sh 'ls -la'
-                sh 'terraform init'
+                sh 'Terraform init'
             }
         }
+
     }
 }
