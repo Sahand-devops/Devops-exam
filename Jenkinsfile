@@ -13,7 +13,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 dir('terraform') {
-                    sh 'terraform plan -var-file-terraform.tfvars'
+                    sh 'terraform plan -var-file=terraform.tfvars'
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 dir('terraform') {
-                    sh 'terraform apply -auto-approve -var-file-terraform.tfvars'
+                    sh 'terraform apply -auto-approve -var-file=terraform.tfvars'
                 }
             }
         }
