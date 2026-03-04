@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            steps{
+            steps {
                 checkout scm
             }
         }
@@ -36,15 +36,29 @@ pipeline {
             steps {
                 dir('terraform') {
                     script {
-                        VM_IP = sh(
+                        env.VM_IP = sh(
                             script: "terraform output -raw vm_ip",
                             returnStdout: true
                         ).trim()
-
-                        echo "VM IP is: ${VM_IP}"
                     }
                 }
             }
+        }
+        
+        stage('Wait for SSH') {
+            steps {
+                sh """
+                    echo "Checking SSH connection..."
+
+                    until ssh ubuntu@$VM_IP "echo ready"
+                    do
+                    echo "Waiting for SSH..."
+                    sleep 5
+                    done
+
+                    echo "SSH is ready"
+                """
+                }
         }
     }
 }
