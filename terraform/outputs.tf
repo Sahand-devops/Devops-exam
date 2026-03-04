@@ -5,8 +5,3 @@ output "vm_name" {
 output "vm_state" {
   value = hyperv_machine_instance.vm.state
 }
-
-output "vm_ip" {
-  description = "IP address of the created VM"
-    value = var.vm_ip
-}

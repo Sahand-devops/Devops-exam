@@ -7,8 +7,8 @@ resource "hyperv_machine_instance" "vm" {
   name                 = var.vm_name
   generation           = 2
   static_memory        = true
-  memory_startup_bytes = var.vm_memory_mb * 1024 * 1024
-  processor_count      = var.vm_cpu
+  memory_startup_bytes = var.memory_mb * 1024 * 1024
+  processor_count      = var.cpu_count
   state                = "Running"
 
   hard_disk_drives {

@@ -15,36 +15,25 @@ variable "hyperv_password" {
 }
 
 variable "vm_name" {
-  type        = string
-  description = "Name of the virtual machine"
+  type = string
 }
 
-variable "vm_ip" {
-  type        = string
-  description = "IP-adress of the virtual machine"
+variable "memory_mb" {
+  type = number
 }
 
-variable "vm_memory_mb" {
-  type        = number
-  description = "Startup memory in MB"
-}
-
-variable "vm_cpu" {
-  type        = number
-  description = "Number of virtual CPUs"
+variable "cpu_count" {
+  type = number
 }
 
 variable "vhd_template_path" {
-  type        = string
-  description = "Path to base template VHD"
+  type = string
 }
 
 variable "vhd_output_path" {
-  type        = string
-  description = "Path where new VHD will be created"
+  type = string
 }
 
 variable "switch_name" {
-  type        = string
-  description = "Existing Hyper-V switch name"
+  type = string
 }
