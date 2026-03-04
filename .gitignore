@@ -3,7 +3,6 @@
 *.tfstate
 *.tfstate.backup
 crash.log
-*.tfvars
 
 # OS
 .DS_Store
