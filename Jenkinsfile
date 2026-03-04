@@ -48,17 +48,17 @@ pipeline {
         stage('Wait for SSH') {
             steps {
                 sh """
-                    echo "Checking SSH connection..."
-
-                    until ssh ubuntu@$VM_IP "echo ready"
-                    do
                     echo "Waiting for SSH..."
-                    sleep 5
+
+                    until ssh -o StrictHostKeyChecking=no -o BatchMode=yes ubuntu@$VM_IP "echo ready"
+                    do
+                        echo "Waiting for SSH..."
+                        sleep 5
                     done
 
                     echo "SSH is ready"
                 """
-                }
+            }
         }
     }
 }
