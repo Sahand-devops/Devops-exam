@@ -50,7 +50,7 @@ pipeline {
                 sh """
                     echo "Waiting for SSH..."
 
-                    until ssh -o StrictHostKeyChecking=no -o BatchMode=yes ubuntu@$VM_IP "echo ready"
+                    until ssh -o StrictHostKeyChecking=no -o BatchMode=yes administrator@$VM_IP "echo ready"
                     do
                         echo "Waiting for SSH..."
                         sleep 5
