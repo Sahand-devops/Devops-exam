@@ -106,5 +106,17 @@ pipeline {
                 }
             }
         }
+
+        stage('Verify Teardown') {
+            steps {
+                sh """
+                    if curl --max-time 5 http://$VM_IP; then
+                        echo "Server still running"
+                    else
+                        echo "Server removed"
+                    fi
+                """
+    }
+}
     }
 }    
