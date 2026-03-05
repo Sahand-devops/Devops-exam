@@ -47,18 +47,36 @@ pipeline {
         
         stage('Wait for SSH') {
             steps {
-                sh """
-                    echo "Waiting for SSH..."
+                dir('ansible') {
+                    timeout(time: 3, untit: 'MINUTES') {
+                        sh """
+                            echo "Waiting for SSH..."
 
-                    until ssh -o StrictHostKeyChecking=no -o BatchMode=yes administrator@$VM_IP "echo ready"
-                    do
-                        echo "Waiting for SSH..."
-                        sleep 5
-                    done
+                            until ssh -i deploy_key -o StrictHostKeyChecking=no -o BatchMode=yes administrator@$VM_IP "echo ready"
+                            do
+                                echo "Waiting for SSH..."
+                                sleep 5
+                            done
 
-                    echo "SSH is ready"
-                """
+                            echo "SSH is ready"
+                        """
+                    }
+                }
+            }
+        }
+
+        stage('Configure VM') {
+            steps {
+                dir('ansible') {
+                    sh """
+                        ansible-playbook \
+                        -i "$VM_IP," \
+                        -u administrator \
+                        --private-key deploy_key \
+                        playbook.yml
+                    """
+                }
             }
         }
     }
-}
+}    
