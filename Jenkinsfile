@@ -44,6 +44,14 @@ pipeline {
                 }
             }
         }
+
+        stage('Fix SSH key permissions') {
+            steps {
+                dir('ansible') {
+                    sh 'chmod 600 deploy_key'
+                }
+            }
+        }
         
         stage('Wait for SSH') {
             steps {
