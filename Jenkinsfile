@@ -93,6 +93,12 @@ pipeline {
             }
         }
 
+        stage('Approve Destroy') {
+            steps {
+                input message: 'Destroy VM?', ok: 'Destroy'
+            }
+        }
+
         stage('Terraform Destroy') {
             steps {
                 dir('terraform') {
