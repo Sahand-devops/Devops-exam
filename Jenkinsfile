@@ -48,7 +48,7 @@ pipeline {
         stage('Wait for SSH') {
             steps {
                 dir('ansible') {
-                    timeout(time: 3, untit: 'MINUTES') {
+                    timeout(time: 3, unti: 'MINUTES') {
                         sh """
                             echo "Waiting for SSH..."
 
