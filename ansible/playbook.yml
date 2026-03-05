@@ -20,3 +20,8 @@
         name: nginx
         state: present
         update_cache: true
+
+    - name: Deploy web page
+      ansible.builtin.copy:
+        src: index.html
+        dest: /var/www/html/index.html

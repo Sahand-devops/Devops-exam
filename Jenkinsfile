@@ -86,5 +86,11 @@ pipeline {
                 }
             }
         }
+
+        stage('Verify Web Server') {
+            steps {
+                sh "curl hhtp://$VM_IP"
+            }
+        }
     }
 }    
