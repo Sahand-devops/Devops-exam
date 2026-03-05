@@ -1,0 +1,22 @@
+---
+- name: Configure webserver
+  hosts: webservers
+  become: true
+
+  tasks:
+
+    - name: Create deploy user
+      ansible.builtin.user:
+        name: deploy
+        create_home: true
+
+    - name: Add SSH key
+      ansible.posix.authorized_key:
+        user: deploy
+        key: "{{ lookup('file', 'deploy_key.pub') }}"
+
+    - name: Install nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: true
