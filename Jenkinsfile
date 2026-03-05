@@ -89,7 +89,7 @@ pipeline {
 
         stage('Verify Web Server') {
             steps {
-                sh "curl hhtp://$VM_IP"
+                sh "curl http://$VM_IP"
             }
         }
     }
