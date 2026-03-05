@@ -92,5 +92,13 @@ pipeline {
                 sh "curl http://$VM_IP"
             }
         }
+
+        stage('Terraform Destroy') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform destroy -auto-approve'
+                }
+            }
+        }
     }
 }    
