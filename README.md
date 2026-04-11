@@ -2,8 +2,8 @@
 
 ## Overview
 
-This thesis project focuses on automating user management in a Linux environment using Bash scripting and DevOps principles. The system reads user data from a CSV file and performs automated account creation while ensuring consistency, error handling, and scalability.
+This project demonstrates how to build an automated deployment pipeline using DevOps tools. The goal is to automate the entire process from code to a running application.
 
-The goal is to reduce manual administrative work and demonstrate how automation can improve reliability and efficiency in system operations.
+When code is pushed to a Git repository, a CI/CD pipeline in Jenkins is triggered. Terraform is then used to provision a virtual machine in Hyper-V, and Ansible automatically configures the server and deploys a web application.
 
----
+The project also includes a teardown process that automatically removes the infrastructure after use.
